@@ -1,9 +1,21 @@
+const {
+  getTourService,
+  postTourService,
+} = require("../services/tour.services");
+
 module.exports.getTours = async (req, res, next) => {
-  res.send("Get Tour");
+  let filters = { ...req.query };
+  const tours = await getTourService();
+  res.send(tours);
 };
 
 module.exports.postTours = async (req, res, next) => {
-  res.send("Post Tour");
+  try {
+    const result = await postTourService(req.body);
+    res.send(result);
+  } catch (error) {
+    res.send(error);
+  }
 };
 
 module.exports.trendingTours = async (req, res, next) => {
