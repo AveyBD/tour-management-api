@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gtihub.com/aveybd.git"
+    "url": "git+https://github.com/AveyBD/tour-management-api.git"
   },
   "keywords": [
     "Tour",
@@ -21,7 +21,7 @@
   "author": "Debashish D. Dev",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/gtihub.com/aveybd/issues"
+    "url": "https://github.com/AveyBD/tour-management-api/issues"
   },
-  "homepage": "https://github.com/gtihub.com/aveybd#readme"
+  "homepage": "https://github.com/AveyBD/tour-management-api#readme"
 }
