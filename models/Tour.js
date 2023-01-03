@@ -6,7 +6,7 @@ const TourSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      require: [true, "You must provide a valid Tour Name"],
+      required: [true, "You must provide a valid Tour Name"],
       trim: true,
       unique: [true, "A tour exist with the same name"],
     },

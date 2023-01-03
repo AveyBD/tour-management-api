@@ -32,7 +32,7 @@ module.exports.getTours = async (req, res, next) => {
     queries.limit = parseInt(limit);
   }
   try {
-    const tours = await getTourService();
+    const tours = await getTourService(filters, queries);
     res.status(200).json({
       success: true,
       data: tours,
@@ -49,7 +49,11 @@ module.exports.getTours = async (req, res, next) => {
 module.exports.postTours = async (req, res, next) => {
   try {
     const result = await postTourService(req.body);
-    res.send(result);
+    res.send({
+      success: true,
+      message: "Tour has been added.",
+      data: result,
+    });
   } catch (error) {
     res.send(error);
   }
