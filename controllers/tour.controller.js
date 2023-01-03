@@ -1,6 +1,7 @@
 const {
   getTourService,
   postTourService,
+  getTourDetailsService,
 } = require("../services/tour.services");
 
 module.exports.getTours = async (req, res, next) => {
@@ -68,7 +69,12 @@ module.exports.cheapestTours = async (req, res, next) => {
 };
 
 module.exports.detailsTours = async (req, res, next) => {
-  res.send("details tour");
+  const tour = await getTourDetailsService(req.params.id);
+  res.status(200).json({
+    success: true,
+    message: "Data Found",
+    data: tour,
+  });
 };
 
 module.exports.updateTours = async (req, res, next) => {
