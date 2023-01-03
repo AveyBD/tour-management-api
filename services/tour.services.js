@@ -20,3 +20,12 @@ exports.getTourDetailsService = async (id) => {
   console.log(id);
   return await Tour.findById({ _id: id });
 };
+exports.updateTourDetailsService = async (id, data) => {
+  try {
+    return await Tour.updateOne({ _id: id.id }, data, {
+      runValidators: true,
+    });
+  } catch (error) {
+    return error;
+  }
+};

@@ -2,6 +2,7 @@ const {
   getTourService,
   postTourService,
   getTourDetailsService,
+  updateTourDetailsService,
 } = require("../services/tour.services");
 
 module.exports.getTours = async (req, res, next) => {
@@ -78,5 +79,18 @@ module.exports.detailsTours = async (req, res, next) => {
 };
 
 module.exports.updateTours = async (req, res, next) => {
-  res.send("update tour");
+  const id = req.params;
+  const result = await updateTourDetailsService(id, req.body);
+  if (result.modifiedCount) {
+    res.status(200).json({
+      success: true,
+      message: "Tour has been updated!",
+      result: result,
+    });
+  } else {
+    res.status(400).json({
+      success: false,
+      message: "Dhora Khaiso",
+    });
+  }
 };
