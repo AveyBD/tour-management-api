@@ -23,6 +23,9 @@ const TourSchema = mongoose.Schema(
       type: String,
       required: [true, "Enter the how many days do you cover in this tour"],
     },
+    count: {
+      type: Number,
+    },
   },
   {
     timestamps: true,

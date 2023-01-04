@@ -17,8 +17,19 @@ exports.postTourService = async (data) => {
 };
 
 exports.getTourDetailsService = async (id) => {
-  console.log(id);
-  return await Tour.findById({ _id: id });
+  try {
+    const tour = await Tour.findById({ _id: id });
+
+    if (!tour.count) {
+      // const data = { count: 1 };
+      const countUpdate = await Tour.updateOne({ _id: id }, { count: 1 });
+      console.log(countUpdate);
+    } else {
+      const count = tour.count + 1;
+      await Tour.updateOne({ _id: id }, { count: count });
+    }
+    return tour;
+  } catch (error) {}
 };
 exports.updateTourDetailsService = async (id, data) => {
   try {
