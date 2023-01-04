@@ -23,7 +23,6 @@ exports.getTourDetailsService = async (id) => {
     if (!tour.count) {
       // const data = { count: 1 };
       const countUpdate = await Tour.updateOne({ _id: id }, { count: 1 });
-      console.log(countUpdate);
     } else {
       const count = tour.count + 1;
       await Tour.updateOne({ _id: id }, { count: count });
@@ -40,3 +39,22 @@ exports.updateTourDetailsService = async (id, data) => {
     return error;
   }
 };
+
+exports.cheapestTourService = async () => {
+  try {
+    console.log("first");
+    return await Tour.find({}).sort({ cost: 1 }).limit(3);
+  } catch (error) {
+    return error;
+  }
+};
+
+exports.trendingTourService = async () => {
+  try {
+    return await Tour.find({}).sort({ count: -1 }).limit(3);
+  } catch (error) {
+    return error;
+  }
+};
+
+// return await Tour.find({}).sort({ count: -1 }).limit(3);

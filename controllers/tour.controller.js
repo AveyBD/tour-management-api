@@ -3,6 +3,8 @@ const {
   postTourService,
   getTourDetailsService,
   updateTourDetailsService,
+  cheapestTourService,
+  trendingTourService,
 } = require("../services/tour.services");
 
 module.exports.getTours = async (req, res, next) => {
@@ -62,11 +64,21 @@ module.exports.postTours = async (req, res, next) => {
 };
 
 module.exports.trendingTours = async (req, res, next) => {
-  res.send("Trending Tour");
+  const data = await trendingTourService();
+  res.status(200).json({
+    success: true,
+    message: "Trending Tour",
+    result: data,
+  });
 };
 
 module.exports.cheapestTours = async (req, res, next) => {
-  res.send("cheapest tour");
+  const data = await cheapestTourService();
+  res.status(200).json({
+    success: true,
+    message: "Cheapest Tour",
+    result: data,
+  });
 };
 
 module.exports.detailsTours = async (req, res, next) => {
