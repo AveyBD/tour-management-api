@@ -24,13 +24,6 @@ module.exports = tourRouter;
  *   get:
  *     summary: Retrieves all the tours data
  *     description: This api will call all the tours data from the database. You can use limit and pagination.
- *       parameters:
- *       - in: path
- *        name: query
- *        schema:
- *          type: integer
- *        required: true
-//  *        description: Numeric ID of the user to get
  * responses:
  *       200:
  *         description: A list of users.
