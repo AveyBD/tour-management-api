@@ -1,5 +1,4 @@
 const Tour = require("../models/Tour");
-const views = {};
 exports.getTourService = async (filter, queries) => {
   const tours = await Tour.find(filter)
     .skip(queries.skip)
@@ -22,11 +21,12 @@ exports.getTourDetailsService = async (id) => {
 
     if (!tour.count) {
       // const data = { count: 1 };
-      const countUpdate = await Tour.updateOne({ _id: id }, { count: 1 });
+      await Tour.updateOne({ _id: id }, { count: 1 });
     } else {
       const count = tour.count + 1;
       await Tour.updateOne({ _id: id }, { count: count });
     }
+
     return tour;
   } catch (error) {}
 };
